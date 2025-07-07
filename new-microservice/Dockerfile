@@ -16,5 +16,5 @@ WORKDIR /app
 
 COPY --from=builder /build /app
 
-CMD ["bin/bash"]
+CMD ["/bin/bash"]
 
