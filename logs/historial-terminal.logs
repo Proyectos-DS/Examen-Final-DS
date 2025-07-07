@@ -1,0 +1,120 @@
+ 2001  git init
+ 2002  ls -a
+ 2003  clear
+ 2004  git status
+ 2005  git add legacy-app/.dockerignore new-microservice/.dockerignore 
+ 2006  git status
+ 2007  git commit -m "Primer commit. Exluye carpetas __pycache__"
+ 2008  git branch -m main
+ 2009  git status
+ 2010  git add initdb/
+ 2011  git commit -m "Se agrega init.sql"
+ 2012  git status
+ 2013  git add legacy-app/Dockerfile 
+ 2014  git commit -m "Agrega Dockerfile para legacy-app"
+ 2015  git logall
+ 2016  clear
+ 2017  cd legacy-app/
+ 2018  docker build -t legacy-app:latest .
+ 2019  docker images
+ 2020  docker rmi legacy-app:latest 
+ 2021  docker images
+ 2022  clear
+ 2023  docker build -t legacy-app:latest .
+ 2024  ls
+ 2025  cd ..
+ 2026  cd new-microservice/
+ 2027  ls
+ 2028  docker build -t new-microservice:latest .
+ 2029* 
+ 2030  docker build -t new-microservice:latest .
+ 2031  docker images
+ 2032  git status
+ 2033  cd ..
+ 2034  git status
+ 2035  git add **/requirements.txt
+ 2036  git status
+ 2037  git commit -m "Agrega requirements a legacy-a y new-microservice"
+ 2038  git status
+ 2039  git add legacy-app/Dockerfile 
+ 2040  git commit -m "Se actualiza Dockerfile ara legacy-app Imagen exito"
+ 2041  git add new-microservice/Dockerfile 
+ 2042  git commit -m "Se actualiza Dockerfile para new-microservice Imagen exito"
+ 2043  git logall
+ 2044  git remote add origin https://github.com/Proyectos-DS/Examen-Final-DS.git
+ 2045  git branch -M main
+ 2046  git push -u origin main
+ 2047  cd legacy-app/
+ 2048  cd ..
+ 2049  ls
+ 2050  cd legacy-app/
+ 2051  cd ../new-microservice/
+ 2052  cd ..
+ 2053  ls
+ 2054  git status
+ 2055  git add kubernetes/legacy-app-deployment.yaml 
+ 2056  git commit -m "Se corrigio definicion de puerto"
+ 2057  clear
+ 2058  docker-compose up
+ 2059  docker ps -a
+ 2060  docker ps
+ 2061  docker rm ep_legacy-app_1 
+ 2062  docker rm ep_new-microservice_1 
+ 2063  docker ps -a
+ 2064  docker rm ep_postgres_1 
+ 2065  docker ps -a
+ 2066  cleae
+ 2067  clear
+ 2068  docker-compose up
+ 2069  docker images
+ 2070  docker rmi ep_new-microservice:latest 
+ 2071  docker ps -a
+ 2072  docker rm ep_legacy-app_1 
+ 2073  docker rm ep_postgres_1 
+ 2074  docker rm ep_new-microservice_1 
+ 2075  docker ps
+ 2076  docker ps -a
+ 2077  docker rm legacy-app-container 
+ 2078  docker rm new-microservice-container 
+ 2079  docker ps -a
+ 2080  docker images
+ 2081  docker rmi ep_new-microservice:latest  new-microservice:latest ep_legacy-app:latest  legacy-app:latest 
+ 2082  docker images
+ 2083  docker ps
+ 2084  ls
+ 2085  cd new-microservice/
+ 2086  ls
+ 2087  docker build -t new-microservice:latest .
+ 2088  docker ps
+ 2089  docker ps -a
+ 2090  docker images
+ 2091  docker run -d --name new-microservice-app new-microservice:latest 
+ 2092  docker ps
+ 2093  docker exec -it new-microservice-app sh
+ 2094  docker-compose up
+ 2095  docker ps
+ 2096  docker exec -it new-microservice-app sh
+ 2097  docker ps
+ 2098  docker ps -a
+ 2099  docker exec -it ep_postgres_1 sh
+ 2100  docker-compose up
+ 2101  docker ps
+ 2102  docker ps -a
+ 2103  docker rm df188ebd2396_ep_postgres_1 
+ 2104  clear
+ 2105  cd ..
+ 2106  docker-compose up
+ 2107  clear
+ 2108  docker-compose up
+ 2109  clear
+ 2110  docker-compose up
+ 2111  clar
+ 2112  clear
+ 2113  tree
+ 2114  history
+ 2115  ls
+ 2116  history > historial-terminal.logs
+ 2117  history --help
+ 2118  history 50 > logs/historial-terminal.logs
+ 2119  history 150 > logs/historial-terminal.logs
+ 2120  history 120 > logs/historial-terminal.logs
