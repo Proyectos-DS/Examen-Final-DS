@@ -1,0 +1,39 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build_and_push:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Build and push legacy-app Docker image
+      uses: docker/build-push-action@v4
+      with:
+        context: legacy-app
+        push: false
+        tags: legacy-app:latest
+    - name: Build and push new-microservice Docker image
+      uses: docker/build-push-action@v4
+      with:
+        context: new-microservice
+        push: false
+        tags: new-microservice:latest
+    - name: Set up kubectl
+      uses: azure/setup-kubectl@v3
+      with:
+        version: '1.26.0' # antes '1.26'
+    - name: Set up Minikube
+      run: |
+        curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+        sudo install minikube-linux-amd64 /usr/local/bin/minikube
+    - name: Minikube start
+      run: minikube start --driver=none
+    - name: Deploy to Minikube
+      run: |
+        kubectl apply -f kubernetes/legacy-app-deployment.yaml
+        kubectl apply -f kubernetes/new-microservice-deployment.yaml
